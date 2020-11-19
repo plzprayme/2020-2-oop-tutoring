@@ -1,20 +1,13 @@
-public class WashingMachine {
+public class WashingMachine extends Machine {
 
-    int cost;
     int seje;
-    long startTime;
-    boolean isRunning;
-
-    // final이 붙으면 다시는 수정할 수 없다.
-    // 자바에서 상수를 선언할 때는 final을 사용
-    final static int PRICE = 4000;
 
     public WashingMachine() {
-        this.cost = 0;
+        super();
         this.seje = 2;
-        isRunning = false;
     }
 
+    @Override
     public void run() {
         // 세탁기가 이미 동작하고 있기 때문에 동작할 수 없다.
         // 세탁기가 동작한지 10분이 넘었으면 세탁기를 종료한다.
@@ -53,6 +46,7 @@ public class WashingMachine {
         System.out.println();
     }
 
+    @Override
     public boolean insertCoin(int cost) {
         // 파라미터로 받은 cost를 보유하고 있는 this.cost에 더한다.
         this.cost += cost;
@@ -60,16 +54,6 @@ public class WashingMachine {
 
         // 돈도 충분하고 세제도 충분할 때만 true 반환
         return isEnoughCoin() && isEnoughSeje();
-    }
-
-    // 돈을 충분히 받았는가?
-    private boolean isEnoughCoin() {
-        boolean isEnough = this.cost >= PRICE;
-        if (!isEnough) {
-            System.out.println("돈을 더 넣으세요!");
-        }
-
-        return isEnough;
     }
 
     // 보유 세제가 0보다 많은가?
