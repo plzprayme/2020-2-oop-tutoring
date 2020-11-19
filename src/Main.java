@@ -5,6 +5,7 @@ public class Main {
 
         // 세탁기 설치
         WashingMachine wm = new WashingMachine();
+        DryMachine dm = new DryMachine();
 
         // 무한반복
         while (true) {
@@ -22,7 +23,9 @@ public class Main {
 
                     break;
                 case 2:
-                    // 건조기 사용
+                    if (dm.insertCoin(4000)) {
+                        dm.run();
+                    }
                     break;
                 case 3:
                     // 게임기 사용
